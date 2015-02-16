@@ -95,11 +95,6 @@ public class UIMain implements KeyListener {
     }
   }
 
-  /*public void movePlayer(Coordinates relative) {
-    this.roomPlayer.moveRelative(relative);
-    drawMap(this.roomPlayer.getRoom(), this.roomPlayer);
-  }*/
-
   public void drawRoom(Room room, Player player) {
     this.roomArea.setText(room.renderRoomCropped(player, 15, 10));
   }

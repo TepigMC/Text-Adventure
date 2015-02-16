@@ -1,5 +1,7 @@
 package tepigmc.textadventure.player;
 
+import java.util.List;
+
 import tepigmc.textadventure.entity.Entity;
 import tepigmc.textadventure.inventory.Inventory;
 import tepigmc.textadventure.location.Coordinates;
@@ -8,6 +10,7 @@ import tepigmc.textadventure.room.Room;
 import tepigmc.textadventure.room.Rooms;
 import tepigmc.textadventure.tile.Tile;
 import tepigmc.textadventure.tile.TileDoor;
+import tepigmc.textadventure.util.Convert;
 
 public class Player implements Entity {
   private Coordinates playerCoordinates;
@@ -87,25 +90,10 @@ public class Player implements Entity {
   }
   
   public boolean executeCommand(String command) {
-    String cmd = command.toLowerCase();
-    if (cmd.equals("north") || cmd.equals("n") || 
-        cmd.equals("up") || cmd.equals("u")) {
-      moveRelative(Direction.NORTH);
-      return true;
-    }
-    if (cmd.equals("south") || cmd.equals("s") || 
-        cmd.equals("down") || cmd.equals("d")) {
-      moveRelative(Direction.SOUTH);
-      return true;
-    }
-    if (cmd.equals("west") || cmd.equals("w") || 
-        cmd.equals("left") || cmd.equals("l")) {
-      moveRelative(Direction.WEST);
-      return true;
-    }
-    if (cmd.equals("east") || cmd.equals("e") || 
-        cmd.equals("right") || cmd.equals("r")) {
-      moveRelative(Direction.EAST);
+    String[] cmd = command.toLowerCase().split(" ");
+    Direction direction = Direction.getDirection(cmd[0]);
+    if (direction != null) {
+      moveRelative(direction);
       return true;
     }
     return false;
