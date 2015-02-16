@@ -3,14 +3,20 @@ package tepigmc.textadventure.room;
 import java.util.HashMap;
 
 import tepigmc.textadventure.entity.NPC;
+import tepigmc.textadventure.entity.Trader;
+import tepigmc.textadventure.item.Inventory;
+import tepigmc.textadventure.item.ItemStack;
+import tepigmc.textadventure.item.Items;
+import tepigmc.textadventure.item.Trade;
 import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.tile.TileDoor;
 import tepigmc.textadventure.tile.Tiles;
+import tepigmc.textadventure.util.Convert;
 
 public class Rooms {
   public static HashMap<String, Room> roomHashMap = new HashMap<String, Room>();
-  public static Room roomMaze = new Room(
-    "room_maze",
+  public static Room maze = new Room(
+    "maze",
     RoomFactory.generateMap(new Object[] {
       "xxxxxNxxxxxxxxxxxxxxx",
       "x x   x x       x   x",
@@ -35,8 +41,8 @@ public class Rooms {
       "xxxxxxxxxxxxxxxxxxxxx",
       'x', Tiles.wall,
       ' ', Tiles.empty,
-      'N', new TileDoor('\u2591', "room_north", new Coordinates(3, 5)),
-      'E', new TileDoor('\u2591', "room_east", new Coordinates(1, 3))
+      'N', new TileDoor('\u2591', "north", new Coordinates(3, 5)),
+      'E', new TileDoor('\u2591', "east", new Coordinates(1, 3))
     }),
     new String[] {
       "Welcome to the land of Text Adventuring!",
@@ -44,8 +50,8 @@ public class Rooms {
       "Do You?"
     }
   );
-  public static Room roomCenter = new Room(
-    "room_center",
+  public static Room center = new Room(
+    "center",
     RoomFactory.generateMap(new Object[] {
       "xxxNxxx",
       "x     x",
@@ -56,14 +62,14 @@ public class Rooms {
       "xxxSxxx",
       'x', Tiles.wall,
       ' ', Tiles.empty,
-      'N', new TileDoor('\u2591', "room_north", new Coordinates(3, 5)),
-      'S', new TileDoor('\u2591', "room_south", new Coordinates(3, 1)),
-      'W', new TileDoor('\u2591', "room_west", new Coordinates(5, 3)),
-      'E', new TileDoor('\u2591', "room_east", new Coordinates(1, 3))
+      'N', new TileDoor('\u2591', "north", new Coordinates(3, 5)),
+      'S', new TileDoor('\u2591', "south", new Coordinates(3, 1)),
+      'W', new TileDoor('\u2591', "west", new Coordinates(5, 3)),
+      'E', new TileDoor('\u2591', "east", new Coordinates(1, 3))
     })
   );
-  public static Room roomWest = new Room(
-    "room_west",
+  public static Room west = new Room(
+    "west",
     RoomFactory.generateMap(new Object[] {
       "xxxxxxx",
       "x     x",
@@ -74,11 +80,11 @@ public class Rooms {
       "xxxxxxx",
       'x', Tiles.wall,
       ' ', Tiles.empty,
-      'A', new TileDoor('\u2591', "room_center", new Coordinates(1, 3))
+      'A', new TileDoor('\u2591', "center", new Coordinates(1, 3))
     })
   );
-  public static Room roomEast = new Room(
-    "room_east",
+  public static Room east = new Room(
+    "east",
     RoomFactory.generateMap(new Object[] {
       "xxxxxxx",
       "x     x",
@@ -89,11 +95,11 @@ public class Rooms {
       "xxxxxxx",
       'x', Tiles.wall,
       ' ', Tiles.empty,
-      'B', new TileDoor('\u2591', "room_center", new Coordinates(5, 3))
+      'B', new TileDoor('\u2591', "center", new Coordinates(5, 3))
     })
   );
-  public static Room roomNorth = new Room(
-    "room_north",
+  public static Room north = new Room(
+    "north",
     RoomFactory.generateMap(new Object[] {
       "xxxxxxx",
       "x     x",
@@ -104,11 +110,11 @@ public class Rooms {
       "xxxCxxx",
       'x', Tiles.wall,
       ' ', Tiles.empty,
-      'C', new TileDoor('\u2591', "room_center", new Coordinates(3, 1))
+      'C', new TileDoor('\u2591', "center", new Coordinates(3, 1))
     })
   );
-  public static Room roomSouth = new Room(
-    "room_south",
+  public static Room south = new Room(
+    "south",
     RoomFactory.generateMap(new Object[] {
       "xxxDxxx",
       "x     x",
@@ -119,19 +125,40 @@ public class Rooms {
       "xxxxxxx",
       'x', Tiles.wall,
       ' ', Tiles.empty,
-      'D', new TileDoor('\u2591', "room_center", new Coordinates(3, 5))
+      'D', new TileDoor('\u2591', "center", new Coordinates(3, 5))
     })
   );
 
   public static void init() {
-    Rooms.registerRoom(Rooms.roomMaze);
-    Rooms.registerRoom(Rooms.roomCenter);
-    Rooms.registerRoom(Rooms.roomWest);
-    Rooms.registerRoom(Rooms.roomEast);
-    Rooms.registerRoom(Rooms.roomNorth);
-    Rooms.registerRoom(Rooms.roomSouth);
+    Rooms.registerRoom(Rooms.maze);
+    Rooms.registerRoom(Rooms.center);
+    Rooms.registerRoom(Rooms.west);
+    Rooms.registerRoom(Rooms.east);
+    Rooms.registerRoom(Rooms.north);
+    Rooms.registerRoom(Rooms.south);
     
-    Rooms.roomMaze.addEntity(new NPC(new Coordinates(1, 1), "Fredrich", 'o'));
+    Rooms.maze.addEntity(
+      new NPC(
+        new Coordinates(1, 1),
+        new Inventory(Convert.arrayToList(new ItemStack[] {
+          new ItemStack(Items.apple, 5)
+        })),
+        "Fredrich", 'N'
+      )
+    );
+    Rooms.maze.addEntity(
+      new Trader(
+        new Coordinates(7, 1),
+        new Inventory(Convert.arrayToList(new ItemStack[] {
+          new ItemStack(Items.apple, 5)
+        })),
+        new Trade(
+          new ItemStack(Items.apple, 2),
+          new ItemStack(Items.banana, 3)
+        ),
+        "Trader Joe", 'T'
+      )
+    );
   }
 
   public static void registerRoom(Room room) {

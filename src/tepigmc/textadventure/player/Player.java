@@ -1,9 +1,9 @@
 package tepigmc.textadventure.player;
 
 import tepigmc.textadventure.entity.Entity;
-import tepigmc.textadventure.entity.Merchant;
 import tepigmc.textadventure.entity.NPC;
-import tepigmc.textadventure.inventory.Inventory;
+import tepigmc.textadventure.entity.Trader;
+import tepigmc.textadventure.item.Inventory;
 import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.location.Direction;
 import tepigmc.textadventure.room.Room;
@@ -54,11 +54,11 @@ public class Player implements Entity {
         if (entity instanceof NPC) {
           NPC npc = (NPC) entity;
           System.out.println("Move: You collided with " + npc.getName());
-          if (entity instanceof Merchant) {
-            //TODO activate trade
+          if (entity instanceof Trader) {
+            ((Trader) entity).trade(this.playerInventory);
           }
         }
-        //TODO
+        //TODO finish handleEntityCollisions()
       }
     }
   }
