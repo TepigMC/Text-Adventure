@@ -1,6 +1,6 @@
 package tepigmc.textadventure.entity;
 
-import tepigmc.textadventure.coordinates.Coordinates;
+import tepigmc.textadventure.location.Coordinates;
 
 public interface Entity {
   Coordinates getCoordinates();

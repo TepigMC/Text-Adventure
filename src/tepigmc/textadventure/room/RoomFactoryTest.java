@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import tepigmc.textadventure.coordinates.Coordinates;
+import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.tile.Tile;
 import tepigmc.textadventure.tile.TileDoor;
 import tepigmc.textadventure.tile.Tiles;

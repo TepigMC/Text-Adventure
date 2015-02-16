@@ -2,8 +2,8 @@ package tepigmc.textadventure.room;
 
 import java.util.HashMap;
 
-import tepigmc.textadventure.coordinates.Coordinates;
 import tepigmc.textadventure.entity.NPC;
+import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.tile.TileDoor;
 import tepigmc.textadventure.tile.Tiles;
 

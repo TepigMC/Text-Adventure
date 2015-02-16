@@ -51,7 +51,7 @@ public class UIMain implements KeyListener {
     frame.add(input, BorderLayout.PAGE_END);
 
     frame.addWindowListener(new WindowAdapter(){ 
-      public void windowOpened( WindowEvent e){ 
+      public void windowOpened(WindowEvent e){ 
         input.requestFocusInWindow(); //input.requestFocus();
       } 
     });

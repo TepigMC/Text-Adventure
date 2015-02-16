@@ -78,33 +78,34 @@ public class Player implements Entity {
     return move(getCoordinatesRelative(relative));
   }
 
+  public boolean moveRelative(Direction direction) {
+    return move(getCoordinatesRelative(direction.getRelativeCoordinates()));
+  }
+  
   public boolean moveRelative(Direction direction, int distance) {
-    Coordinates relative = direction.getRelativeCoordinates();
-    relative.setX(relative.getX()*distance);
-    relative.setY(relative.getY()*distance);
-    return move(getCoordinatesRelative(relative));
+    return move(getCoordinatesRelative(direction.getRelativeCoordinates(distance)));
   }
   
   public boolean executeCommand(String command) {
     String cmd = command.toLowerCase();
     if (cmd.equals("north") || cmd.equals("n") || 
         cmd.equals("up") || cmd.equals("u")) {
-      moveRelative(new Coordinates(0, -1));
+      moveRelative(Direction.NORTH);
       return true;
     }
     if (cmd.equals("south") || cmd.equals("s") || 
         cmd.equals("down") || cmd.equals("d")) {
-      moveRelative(new Coordinates(0, 1));
+      moveRelative(Direction.SOUTH);
       return true;
-   }
+    }
     if (cmd.equals("west") || cmd.equals("w") || 
         cmd.equals("left") || cmd.equals("l")) {
-      moveRelative(new Coordinates(-1, 0));
+      moveRelative(Direction.WEST);
       return true;
     }
     if (cmd.equals("east") || cmd.equals("e") || 
         cmd.equals("right") || cmd.equals("r")) {
-      moveRelative(new Coordinates(1, 0));
+      moveRelative(Direction.EAST);
       return true;
     }
     return false;

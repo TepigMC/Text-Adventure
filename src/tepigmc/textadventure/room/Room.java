@@ -3,8 +3,8 @@ package tepigmc.textadventure.room;
 import java.util.ArrayList;
 import java.util.List;
 
-import tepigmc.textadventure.coordinates.Coordinates;
 import tepigmc.textadventure.entity.Entity;
+import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.player.Player;
 import tepigmc.textadventure.tile.Tile;
 import tepigmc.textadventure.util.Convert;

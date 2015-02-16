@@ -1,6 +1,6 @@
 package tepigmc.textadventure;
 
-import tepigmc.textadventure.coordinates.Coordinates;
+import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.player.Player;
 import tepigmc.textadventure.room.Rooms;
 import tepigmc.textadventure.ui.UIMain;

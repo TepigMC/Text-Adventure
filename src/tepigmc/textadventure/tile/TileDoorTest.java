@@ -7,7 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import tepigmc.textadventure.coordinates.Coordinates;
+import tepigmc.textadventure.location.Coordinates;
 
 public class TileDoorTest {
   TileDoor door0;

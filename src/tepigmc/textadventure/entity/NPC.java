@@ -1,6 +1,6 @@
 package tepigmc.textadventure.entity;
 
-import tepigmc.textadventure.coordinates.Coordinates;
+import tepigmc.textadventure.location.Coordinates;
 
 public class NPC implements Entity {
   private Coordinates npcCoordinates;

@@ -13,4 +13,10 @@ public enum Direction {
   }
   
   public Coordinates getRelativeCoordinates() { return this.relativeCoordinates; };
+  public Coordinates getRelativeCoordinates(int distance) {
+    Coordinates relative = getRelativeCoordinates();
+    relative.setX(relative.getX() * distance);
+    relative.setY(relative.getY() * distance);
+    return relative;
+  }
 }

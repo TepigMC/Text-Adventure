@@ -1,6 +1,6 @@
 package tepigmc.textadventure.tile;
 
-import tepigmc.textadventure.coordinates.Coordinates;
+import tepigmc.textadventure.location.Coordinates;
 
 public class TileDoor extends Tile {
   private String roomID;
