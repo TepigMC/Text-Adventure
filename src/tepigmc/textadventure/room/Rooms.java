@@ -131,7 +131,7 @@ public class Rooms {
     Rooms.registerRoom(Rooms.roomNorth);
     Rooms.registerRoom(Rooms.roomSouth);
     
-    Rooms.roomMaze.addEntity(new NPC(new Coordinates(1, 1), 'o'));
+    Rooms.roomMaze.addEntity(new NPC(new Coordinates(1, 1), "Fredrich", 'o'));
   }
 
   public static void registerRoom(Room room) {

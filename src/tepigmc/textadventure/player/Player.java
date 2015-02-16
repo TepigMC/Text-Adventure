@@ -1,8 +1,8 @@
 package tepigmc.textadventure.player;
 
-import java.util.List;
-
 import tepigmc.textadventure.entity.Entity;
+import tepigmc.textadventure.entity.Merchant;
+import tepigmc.textadventure.entity.NPC;
 import tepigmc.textadventure.inventory.Inventory;
 import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.location.Direction;
@@ -10,7 +10,6 @@ import tepigmc.textadventure.room.Room;
 import tepigmc.textadventure.room.Rooms;
 import tepigmc.textadventure.tile.Tile;
 import tepigmc.textadventure.tile.TileDoor;
-import tepigmc.textadventure.util.Convert;
 
 public class Player implements Entity {
   private Coordinates playerCoordinates;
@@ -49,20 +48,40 @@ public class Player implements Entity {
     setCoordinates(new Coordinates(newX, newY));
   }
   
-  public boolean move(Coordinates coordinates) {
+  public void handleEntityCollisions() {
+    for (Entity entity : getRoom().getEntities()) {
+      if (entity.getCoordinates().equals(this.playerCoordinates)) {
+        if (entity instanceof NPC) {
+          NPC npc = (NPC) entity;
+          System.out.println("Move: You collided with " + npc.getName());
+          if (entity instanceof Merchant) {
+            //TODO activate trade
+          }
+        }
+        //TODO
+      }
+    }
+  }
+  
+  public boolean canMove(Room room, Coordinates coordinates) {
     int x = coordinates.getX();
     int y = coordinates.getY();
-    if (x < 0 || y >= getRoom().getWidth() ||
-        x < 0 || y >= getRoom().getHeight()) {
+    if (x < 0 || y >= room.getWidth() ||
+        x < 0 || y >= room.getHeight()) {
       System.out.println("Move: You can't move outside the room!");
       return false;
     }
-    Tile nextTile = getRoom().getTile(coordinates);
+    Tile nextTile = room.getTile(coordinates);
     if (nextTile.getSolid()) {
       System.out.println("Move: You can't move into a solid tile!");
       return false;
     }
-
+    return true;
+  }
+  
+  public boolean move(Coordinates coordinates) {
+    if (!canMove(getRoom(), coordinates)) { return false; }
+    Tile nextTile = getRoom().getTile(coordinates);
     if (nextTile instanceof TileDoor) {
       TileDoor door = (TileDoor) nextTile;
       System.out.println(
@@ -74,6 +93,7 @@ public class Player implements Entity {
     else {
       setCoordinates(coordinates);
     }
+    handleEntityCollisions();
     return true;
   }
   
