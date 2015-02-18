@@ -47,14 +47,11 @@ public class Inventory {
   }
   
   public void changeCount(Item item, int count) {
-    //TODO add changeCount()
-  }
-  
-  public void increaseCount(Item item, int count) {
-    //TODO add increaseCount()
-  }
-  
-  public void decreaseCount(Item item, int count) {
-    //TODO add decreaseCount()
+    for (ItemStack itemStack : this.inventoryItemStacks) {
+      if (itemStack.isItem(item)) {
+        itemStack.changeCount(count);
+        return;
+      }
+    }
   }
 }

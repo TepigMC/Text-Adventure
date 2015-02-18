@@ -7,8 +7,8 @@ import tepigmc.textadventure.location.Coordinates;
 public class Trader extends NPC {
   private Trade traderTrade;
   
-  public Trader(Coordinates coordinates, Inventory inventory, Trade trade, String name, char icon) {
-    super(coordinates, inventory, name, icon);
+  public Trader(char icon, String name, Coordinates coordinates, Inventory inventory, Trade trade) {
+    super(icon, name, coordinates, inventory);
   }
   
   public Trade getTrade() { return this.traderTrade; }

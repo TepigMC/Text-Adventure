@@ -139,15 +139,16 @@ public class Rooms {
     
     Rooms.maze.addEntity(
       new NPC(
+        'N', "Fredrich",
         new Coordinates(1, 1),
         new Inventory(Convert.arrayToList(new ItemStack[] {
           new ItemStack(Items.apple, 5)
-        })),
-        "Fredrich", 'N'
+        }))
       )
     );
     Rooms.maze.addEntity(
       new Trader(
+        'T', "Trader Joe", 
         new Coordinates(7, 1),
         new Inventory(Convert.arrayToList(new ItemStack[] {
           new ItemStack(Items.apple, 5)
@@ -155,8 +156,7 @@ public class Rooms {
         new Trade(
           new ItemStack(Items.apple, 2),
           new ItemStack(Items.banana, 3)
-        ),
-        "Trader Joe", 'T'
+        )
       )
     );
   }

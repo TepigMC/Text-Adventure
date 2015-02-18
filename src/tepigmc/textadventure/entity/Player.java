@@ -1,8 +1,5 @@
-package tepigmc.textadventure.player;
+package tepigmc.textadventure.entity;
 
-import tepigmc.textadventure.entity.Entity;
-import tepigmc.textadventure.entity.NPC;
-import tepigmc.textadventure.entity.Trader;
 import tepigmc.textadventure.item.Inventory;
 import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.location.Direction;
@@ -12,29 +9,29 @@ import tepigmc.textadventure.tile.Tile;
 import tepigmc.textadventure.tile.TileDoor;
 
 public class Player implements Entity {
-  private Coordinates playerCoordinates;
-  private Inventory playerInventory;
   private char playerIcon;
   private String playerRoomID;
+  private Coordinates playerCoordinates;
+  private Inventory playerInventory;
 
-  public Player(String roomID, Coordinates coordinates, Inventory inventory, char icon) {
-    this.playerCoordinates = coordinates;
-    this.playerInventory = inventory;
+  public Player(char icon, String roomID, Coordinates coordinates, Inventory inventory) {
     this.playerIcon = icon;
     this.playerRoomID = roomID;
+    this.playerCoordinates = coordinates;
+    this.playerInventory = inventory;
   }
 
-  public Coordinates getCoordinates() { return this.playerCoordinates; }
-  public Inventory getInventory() { return this.playerInventory; }
   public char getIcon() { return this.playerIcon; }
   public String getRoomID() { return this.playerRoomID; }
   public Room getRoom() { return Rooms.get(this.playerRoomID); }
+  public Coordinates getCoordinates() { return this.playerCoordinates; }
+  public Inventory getInventory() { return this.playerInventory; }
 
-  public void setCoordinates(Coordinates coordinates) { this.playerCoordinates = coordinates; }
-  public void setInventory(Inventory inventory) { this.playerInventory = inventory; }
   public void setIcon(char icon) { this.playerIcon = icon; }
   public void setRoomID(String roomID) { this.playerRoomID = roomID; }
   public void setRoom(Room room) { this.playerRoomID = room.getID(); }
+  public void setCoordinates(Coordinates coordinates) { this.playerCoordinates = coordinates; }
+  public void setInventory(Inventory inventory) { this.playerInventory = inventory; }
 
   public Coordinates getCoordinatesRelative(Coordinates relative) {
     int newX = this.playerCoordinates.getX() + relative.getX();

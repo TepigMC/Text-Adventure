@@ -15,7 +15,7 @@ public class Coordinates {
   public void setX(int x) { this.xPos = x; }
   public void setY(int y) { this.yPos = y; }
   
-  public String toString() { return "Coordinates(x:" + this.xPos + ", y:" + this.yPos + ")"; }
+  public String toString() { return "Coordinates(" + this.xPos + ", " + this.yPos + ")"; }
 
   public boolean equals(Coordinates coordinates) {
     if (this.xPos == coordinates.getX() && this.yPos == coordinates.getY()) {

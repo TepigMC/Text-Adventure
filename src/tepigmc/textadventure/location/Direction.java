@@ -34,4 +34,8 @@ public enum Direction {
     if (Direction.WEST.isDirection(direction)) { return Direction.WEST; }
     return null;
   }
+  
+  public String toString() {
+    return "Direction." + name();
+  }
 }

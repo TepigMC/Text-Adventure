@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-import tepigmc.textadventure.player.Player;
+import tepigmc.textadventure.entity.Player;
 import tepigmc.textadventure.room.Room;
 
 public class UIMain implements KeyListener {
