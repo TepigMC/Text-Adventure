@@ -19,8 +19,8 @@ public class Trade {
     if (!canTrade(offerInventory, wantInventory)) { return false; }
     ItemStack wantItemStack = this.tradeWantItemStack;
     ItemStack offerItemStack = this.tradeOfferItemStack;
-    wantInventory.changeCount(wantItemStack.getItem(), -1*wantItemStack.getCount());
-    offerInventory.changeCount(offerItemStack.getItem(), -1*offerItemStack.getCount());
+    wantInventory.subtractCount(wantItemStack.getItem(), wantItemStack.getCount());
+    offerInventory.subtractCount(offerItemStack.getItem(), offerItemStack.getCount());
     //TODO finish trade()
     return true;
   }

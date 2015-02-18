@@ -46,12 +46,21 @@ public class Inventory {
     return 0;
   }
   
-  public void changeCount(Item item, int count) {
+  public void addCount(Item item, int count) {
     for (ItemStack itemStack : this.inventoryItemStacks) {
       if (itemStack.isItem(item)) {
-        itemStack.changeCount(count);
-        return;
+        itemStack.addCount(count);
       }
     }
+  }
+  
+  public boolean subtractCount(Item item, int count) {
+    for (ItemStack itemStack : this.inventoryItemStacks) {
+      if (itemStack.isItem(item)) {
+        if (itemStack.subtractCount(count)) { return true; }
+        count -= itemStack.getCount();
+      }
+    }
+    return false;
   }
 }

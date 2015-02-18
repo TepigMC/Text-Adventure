@@ -9,6 +9,7 @@ public class Trader extends NPC {
   
   public Trader(char icon, String name, Coordinates coordinates, Inventory inventory, Trade trade) {
     super(icon, name, coordinates, inventory);
+    this.traderTrade = trade;
   }
   
   public Trade getTrade() { return this.traderTrade; }

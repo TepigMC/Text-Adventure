@@ -15,14 +15,17 @@ public class ItemStack {
   public void setItem(Item item) { this.itemStackItem = item; }
   public void setCount(int count) { this.itemStackCount = count; }
   
+  public boolean hasCount(int count) { return this.itemStackCount >= count; }
+  
   public boolean isItem(Item item) { return this.itemStackItem.equals(item); }
 
-  public void changeCount(int count) {
-    int newCount = this.itemStackCount - count;
-    if (newCount < 0) {
-      newCount = 0;
-      System.out.println("ItemStack: There aren't enough items to subtract " + count + "!");
-    }
-    this.itemStackCount = newCount;
+  public void addCount(int count) {
+    this.itemStackCount += count;
+  }
+  
+  public boolean subtractCount(int count) {
+    if (!hasCount(count)) { return false; }
+    this.itemStackCount -= count;
+    return true;
   }
 }
