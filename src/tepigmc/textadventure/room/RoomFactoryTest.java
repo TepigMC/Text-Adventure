@@ -14,7 +14,7 @@ import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.tile.Tile;
 import tepigmc.textadventure.tile.TileDoor;
 import tepigmc.textadventure.tile.Tiles;
-import tepigmc.textadventure.util.Compare;
+import tepigmc.textadventure.util.Array;
 
 public class RoomFactoryTest {
   Tile[][] map0;
@@ -66,7 +66,7 @@ public class RoomFactoryTest {
   @Test
   public void testGenerateMap_objectArray() {
     assertTrue(
-      Compare.arrayEquals(
+      Array.equals(
         map0,
         RoomFactory.generateMap(
           new Object[] {
@@ -83,13 +83,13 @@ public class RoomFactoryTest {
   
   @Test
   public void testGenerateMap_hashMap() {
-    assertTrue(Compare.arrayEquals(map0, RoomFactory.generateMap(rows0, hashMap0)));
+    assertTrue(Array.equals(map0, RoomFactory.generateMap(rows0, hashMap0)));
   }
 
   @Test
   public void testGenerateMap_objectArray_doors() {
     assertTrue(
-      Compare.arrayEquals(
+      Array.equals(
         map1,
         RoomFactory.generateMap(
           new Object[] {
@@ -110,6 +110,6 @@ public class RoomFactoryTest {
   
   @Test
   public void testGenerateMap_hashMap_doors() {
-    assertTrue(Compare.arrayEquals(map1, RoomFactory.generateMap(rows1, hashMap1)));
+    assertTrue(Array.equals(map1, RoomFactory.generateMap(rows1, hashMap1)));
   }
 }

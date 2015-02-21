@@ -7,7 +7,7 @@ import tepigmc.textadventure.item.Items;
 import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.room.Rooms;
 import tepigmc.textadventure.ui.UIMain;
-import tepigmc.textadventure.util.Convert;
+import tepigmc.textadventure.util.Array;
 
 public class TextAdventure {
   public static UIMain ui;
@@ -18,7 +18,7 @@ public class TextAdventure {
       '\u263A', //smiley face
       "maze",
       new Coordinates(5, 1),
-      new Inventory(Convert.arrayToList(new ItemStack[] {
+      new Inventory(Array.toList(new ItemStack[] {
         new ItemStack(Items.banana, 5)
       }))
     );

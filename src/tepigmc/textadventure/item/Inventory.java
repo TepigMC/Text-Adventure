@@ -2,7 +2,7 @@ package tepigmc.textadventure.item;
 
 import java.util.List;
 
-import tepigmc.textadventure.util.Convert;
+import tepigmc.textadventure.util.Array;
 
 public class Inventory {
   private List<ItemStack> inventoryItemStacks;
@@ -13,7 +13,7 @@ public class Inventory {
   }
   
   public Inventory(ItemStack[] itemStacks) {
-    setItemStacks(Convert.arrayToList(itemStacks));
+    setItemStacks(Array.toList(itemStacks));
   }
 
   public List<ItemStack> getItems() { return this.inventoryItemStacks; }

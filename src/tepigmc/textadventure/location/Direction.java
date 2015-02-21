@@ -2,7 +2,7 @@ package tepigmc.textadventure.location;
 
 import java.util.List;
 
-import tepigmc.textadventure.util.Convert;
+import tepigmc.textadventure.util.Array;
 
 public enum Direction {
   NORTH(new Coordinates(0, -1), new String[] {"north","n","up"}),
@@ -15,7 +15,7 @@ public enum Direction {
   
   private Direction(Coordinates relative, String[] aliases) {
     this.relativeCoordinates = relative;
-    this.directionAliases = Convert.arrayToList(aliases);
+    this.directionAliases = Array.toList(aliases);
   }
   
   public Coordinates getRelativeCoordinates() { return this.relativeCoordinates; };

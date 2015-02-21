@@ -3,7 +3,7 @@ package tepigmc.textadventure.action;
 import java.util.ArrayList;
 import java.util.List;
 
-import tepigmc.textadventure.util.Convert;
+import tepigmc.textadventure.util.Array;
 
 public class Option {
   private String optionName;
@@ -13,15 +13,15 @@ public class Option {
   
   public Option(String name, String[] aliases, String[] description, Action action) {
     this.optionName = name;
-    this.optionAliases = Convert.arrayToList(aliases);
-    this.optionDescription = Convert.arrayToList(description);
+    this.optionAliases = Array.toList(aliases);
+    this.optionDescription = Array.toList(description);
     this.optionAction = action;
   }
   
   public Option(String name, String[] description, Action action) {
     this.optionName = name;
     this.optionAliases = null;
-    this.optionDescription = Convert.arrayToList(description);
+    this.optionDescription = Array.toList(description);
     this.optionAction = action;
   }
   

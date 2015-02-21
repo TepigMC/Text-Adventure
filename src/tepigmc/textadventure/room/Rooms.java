@@ -11,7 +11,7 @@ import tepigmc.textadventure.item.Trade;
 import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.tile.TileDoor;
 import tepigmc.textadventure.tile.Tiles;
-import tepigmc.textadventure.util.Convert;
+import tepigmc.textadventure.util.Array;
 
 public class Rooms {
   public static HashMap<String, Room> roomHashMap = new HashMap<String, Room>();
@@ -141,7 +141,7 @@ public class Rooms {
       new NPC(
         'N', "Fredrich",
         new Coordinates(1, 1),
-        new Inventory(Convert.arrayToList(new ItemStack[] {
+        new Inventory(Array.toList(new ItemStack[] {
           new ItemStack(Items.apple, 5)
         }))
       )
@@ -150,7 +150,7 @@ public class Rooms {
       new Trader(
         'T', "Trader Joe", 
         new Coordinates(7, 1),
-        new Inventory(Convert.arrayToList(new ItemStack[] {
+        new Inventory(Array.toList(new ItemStack[] {
           new ItemStack(Items.apple, 5)
         })),
         new Trade(

@@ -7,7 +7,7 @@ import tepigmc.textadventure.entity.Entity;
 import tepigmc.textadventure.entity.Player;
 import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.tile.Tile;
-import tepigmc.textadventure.util.Convert;
+import tepigmc.textadventure.util.Array;
 
 public class Room {
   private String roomID;
@@ -28,7 +28,7 @@ public class Room {
     this.roomID = id;
     setTiles(tiles);
     this.roomEntities = new ArrayList<Entity>();
-    this.roomSetting = Convert.arrayToList(setting);
+    this.roomSetting = Array.toList(setting);
   }
 
   public Room(String id, Tile[][] tiles) {
@@ -44,10 +44,10 @@ public class Room {
     return this.roomTiles[coordinates.getY()][coordinates.getX()];
   }
   public List<Entity> getEntities() { return this.roomEntities; }
-  public Entity[] getEntitiesArray() { return Convert.listToArray(this.roomEntities); }
+  public Entity[] getEntitiesArray() { return Array.toArray(this.roomEntities); }
   public Entity getEntity(int index) { return this.roomEntities.get(index); }
   public List<String> getSetting() { return this.roomSetting; }
-  public String[] getSettingArray() { return Convert.listToArray(this.roomSetting); }
+  public String[] getSettingArray() { return Array.toArray(this.roomSetting); }
   public String getSetting(int index) { return this.roomSetting.get(index); }
   public int getWidth() { return this.roomWidth; }
   public int getHeight() { return this.roomHeight; }
@@ -62,12 +62,12 @@ public class Room {
     this.roomTiles[coordinates.getY()][coordinates.getX()] = tile;
   }
   public void setEntities(List<Entity> entities) { this.roomEntities = entities; }
-  public void setEntities(Entity[] entities) { this.roomEntities = Convert.arrayToList(entities); }
+  public void setEntities(Entity[] entities) { this.roomEntities = Array.toList(entities); }
   public void setEntities(Entity entity, int index) { this.roomEntities.set(index, entity); }
   public void addEntity(Entity entity) { this.roomEntities.add(entity); }
   public void addEntity(Entity entity, int index) { this.roomEntities.add(index, entity); }
   public void setSetting(List<String> setting) { this.roomSetting = setting; }
-  public void setSetting(String[] setting) { this.roomSetting = Convert.arrayToList(setting); }
+  public void setSetting(String[] setting) { this.roomSetting = Array.toList(setting); }
   public void setSetting(String setting, int index) { this.roomSetting.set(index, setting); }
   public void addSetting(String setting) { this.roomSetting.add(setting); }
   public void addSetting(String setting, int index) { this.roomSetting.add(index, setting); }
