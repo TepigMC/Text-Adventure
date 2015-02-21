@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Array {
   public static <T> T[] subArray(T[] array, int startIndex, int endIndex) {
-    if (startIndex > endIndex) { return null; }
+    if (startIndex >= endIndex) { return null; }
     @SuppressWarnings("unchecked")
     T[] result = (T[]) new Object[endIndex - startIndex];
     int resultIndex = 0;
-    for (int i = startIndex; i <= endIndex; i++) {
+    for (int i = startIndex; i < endIndex; i++) {
       result[resultIndex] = array[i];
       resultIndex++;
     }
@@ -17,14 +17,14 @@ public class Array {
   }
   
   public static <T> T[] subArray(T[] array, int startIndex) {
-    return subArray(array, startIndex, array.length-1);
+    return subArray(array, startIndex, array.length);
   }
   
   public static int[] subArray(int[] array, int startIndex, int endIndex) {
     if (startIndex >= endIndex) { return null; }
-    int[] result = new int[endIndex - startIndex + 1];
+    int[] result = new int[endIndex - startIndex];
     int resultIndex = 0;
-    for (int i = startIndex; i <= endIndex; i++) {
+    for (int i = startIndex; i < endIndex; i++) {
       result[resultIndex] = array[i];
       resultIndex++;
     }
@@ -32,7 +32,7 @@ public class Array {
   }
   
   public static int[] subArray(int[] array, int startIndex) {
-    return subArray(array, startIndex, array.length-1);
+    return subArray(array, startIndex, array.length);
   }
   
   public static <T> boolean arrayEquals(T[][] a, T[][] b) {
