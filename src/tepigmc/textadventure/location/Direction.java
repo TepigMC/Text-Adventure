@@ -8,7 +8,11 @@ public enum Direction {
   NORTH(new Coordinates(0, -1), new String[] {"north","n","up"}),
   EAST(new Coordinates(1, 0), new String[] {"east","e","right"}),
   SOUTH(new Coordinates(0, 1), new String[] {"south","s","down"}),
-  WEST(new Coordinates(-1, 0), new String[] {"west","w","left"});
+  WEST(new Coordinates(-1, 0), new String[] {"west","w","left"}),
+  NE(new Coordinates(1, -1), new String[] {"northeast","ne"}),
+  SE(new Coordinates(1, 1), new String[] {"southeast","se"}),
+  SW(new Coordinates(-1, 1), new String[] {"southwest","sw"}),
+  NW(new Coordinates(-1, -1), new String[] {"northwest","nw"});
   
   private Coordinates relativeCoordinates;
   private List<String> directionAliases;
@@ -32,6 +36,10 @@ public enum Direction {
     if (Direction.EAST.isDirection(direction)) { return Direction.EAST; }
     if (Direction.SOUTH.isDirection(direction)) { return Direction.SOUTH; }
     if (Direction.WEST.isDirection(direction)) { return Direction.WEST; }
+    if (Direction.NE.isDirection(direction)) { return Direction.NE; }
+    if (Direction.SE.isDirection(direction)) { return Direction.SE; }
+    if (Direction.SW.isDirection(direction)) { return Direction.SW; }
+    if (Direction.NW.isDirection(direction)) { return Direction.NW; }
     return null;
   }
   
