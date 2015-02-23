@@ -1,5 +1,9 @@
 package tepigmc.textadventure.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import tepigmc.textadventure.action.Option;
 import tepigmc.textadventure.item.Inventory;
 import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.location.Direction;
@@ -13,12 +17,14 @@ public class Player implements Entity {
   private String playerRoomID;
   private Coordinates playerCoordinates;
   private Inventory playerInventory;
+  private List<Option> playerOptions;
 
   public Player(char icon, String roomID, Coordinates coordinates, Inventory inventory) {
     this.playerIcon = icon;
     this.playerRoomID = roomID;
     this.playerCoordinates = coordinates;
     this.playerInventory = inventory;
+    this.playerOptions = new ArrayList<Option>();
   }
 
   public char getIcon() { return this.playerIcon; }
@@ -26,12 +32,15 @@ public class Player implements Entity {
   public Room getRoom() { return Rooms.get(this.playerRoomID); }
   public Coordinates getCoordinates() { return this.playerCoordinates; }
   public Inventory getInventory() { return this.playerInventory; }
+  public List<Option> getOptions() { return this.playerOptions; }
 
   public void setIcon(char icon) { this.playerIcon = icon; }
   public void setRoomID(String roomID) { this.playerRoomID = roomID; }
   public void setRoom(Room room) { this.playerRoomID = room.getID(); }
   public void setCoordinates(Coordinates coordinates) { this.playerCoordinates = coordinates; }
   public void setInventory(Inventory inventory) { this.playerInventory = inventory; }
+  public void setOptions(List<Option> options) { this.playerOptions = options; }
+  public void addOption(Option option) { this.playerOptions.add(option); }
 
   public Coordinates getCoordinatesRelative(Coordinates relative) {
     int newX = this.playerCoordinates.getX() + relative.getX();
@@ -74,6 +83,18 @@ public class Player implements Entity {
       return false;
     }
     return true;
+  }
+  
+  public boolean canMoveRelative(Room room, Coordinates coordinates) {
+    return canMove(room, getCoordinatesRelative(coordinates));
+  }
+  
+  public boolean canMoveRelative(Room room, Direction direction) {
+    return canMoveRelative(room, direction.getRelativeCoordinates());
+  }
+  
+  public boolean canMoveRelative(Room room, Direction direction, int distance) {
+    return canMoveRelative(room, direction.getRelativeCoordinates(distance));
   }
   
   public boolean move(Coordinates coordinates) {
