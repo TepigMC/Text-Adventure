@@ -9,14 +9,14 @@ import tepigmc.textadventure.room.Rooms;
 import tepigmc.textadventure.util.Array;
 
 public class TextAdventure {
-  public static TextAdventureUI gameUi;
+  public static TextAdventureUI gameUI;
   public static Player gamePlayer;
   
   public static void main(String[] args) {
     Rooms.init();
     
-    gameUi = new TextAdventureUI();
-    //gamePlayer = new Player("center", new Coordinates(3, 3), null, '\u263A'); //smiley face
+    gameUI = new TextAdventureUI();
+    //gamePlayer = new Player('\u263A', "center", new Coordinates(3, 3), null); //smiley face
     gamePlayer = new Player(
       '\u263A', //smiley face
       "maze",
@@ -27,7 +27,9 @@ public class TextAdventure {
     );
   }
   
+  public static TextAdventureUI getUI() { return gameUI; }
   public static Player getPlayer() { return gamePlayer; }
   
+  public static void setUI(TextAdventureUI ui) { gameUI = ui; }
   public static void setPlayer(Player player) { gamePlayer = player; }
 }
