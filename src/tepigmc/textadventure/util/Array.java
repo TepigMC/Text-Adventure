@@ -35,7 +35,7 @@ public class Array {
     return subArray(array, startIndex, array.length);
   }
   
-  public static <T> boolean arrayEquals(T[][] a, T[][] b) {
+  public static <T> boolean equals(T[][] a, T[][] b) {
     if (a.length != b.length || a[0].length != b[0].length) { return false; }
     for (int i = 0; i < a.length; i++) {
       for (int j = 0; j < a[0].length; j++) {
