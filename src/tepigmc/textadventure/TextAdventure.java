@@ -6,15 +6,18 @@ import tepigmc.textadventure.item.ItemStack;
 import tepigmc.textadventure.item.Items;
 import tepigmc.textadventure.location.Coordinates;
 import tepigmc.textadventure.room.Rooms;
-import tepigmc.textadventure.ui.UIMain;
 import tepigmc.textadventure.util.Array;
 
 public class TextAdventure {
-  public static UIMain ui;
+  public static TextAdventureUI gameUi;
+  public static Player gamePlayer;
   
   public static void main(String[] args) {
-    //Player player = new Player("center", new Coordinates(3, 3), null, '\u263A'); //smiley face
-    Player player = new Player(
+    Rooms.init();
+    
+    gameUi = new TextAdventureUI();
+    //gamePlayer = new Player("center", new Coordinates(3, 3), null, '\u263A'); //smiley face
+    gamePlayer = new Player(
       '\u263A', //smiley face
       "maze",
       new Coordinates(5, 1),
@@ -22,8 +25,9 @@ public class TextAdventure {
         new ItemStack(Items.banana, 5)
       }))
     );
-    Rooms.init();
-
-	  ui = new UIMain(player);
   }
+  
+  public static Player getPlayer() { return gamePlayer; }
+  
+  public static void setPlayer(Player player) { gamePlayer = player; }
 }

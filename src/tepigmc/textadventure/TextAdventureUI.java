@@ -1,4 +1,4 @@
-package tepigmc.textadventure.ui;
+package tepigmc.textadventure;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -17,17 +17,14 @@ import javax.swing.UIManager;
 import tepigmc.textadventure.entity.Player;
 import tepigmc.textadventure.room.Room;
 
-public class UIMain implements KeyListener {
+public class TextAdventureUI implements KeyListener {
   //private Scanner scanner = new Scanner(System.in);
-  private JFrame frame;
-  private JTextArea output;
-  private JTextArea roomArea;
-  private JTextField input;
-  private Player roomPlayer;
+  public JFrame frame;
+  public JTextArea output;
+  public JTextArea roomArea;
+  public JTextField input;
 
-  public UIMain(Player player) {
-    this.roomPlayer = player;
-    
+  public TextAdventureUI() {
     try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); }
     catch (Exception e) { e.printStackTrace(); }
 
@@ -62,13 +59,13 @@ public class UIMain implements KeyListener {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
 
-    drawRoom(this.roomPlayer.getRoom(), this.roomPlayer);
-    displayText(this.roomPlayer.getRoom().getSetting());
+    drawRoom();
+    displayText(getPlayer().getRoom().getSetting());
   }
 
-  public Player getPlayer() { return this.roomPlayer; }
+  public Player getPlayer() { return TextAdventure.getPlayer(); }
 
-  public void setPlayer(Player player) { this.roomPlayer = player; }
+  public void setPlayer(Player player) { TextAdventure.setPlayer(player); }
 
   public void keyPressed(KeyEvent e) {}
   public void keyReleased(KeyEvent e) {
@@ -86,15 +83,19 @@ public class UIMain implements KeyListener {
   public void keyTyped(KeyEvent e) {}
 
   public void executeCommand(String command) {
-    if (this.roomPlayer.executeCommand(command)) {
+    if (getPlayer().executeCommand(command)) {
       this.input.setText("");
-      drawRoom(this.roomPlayer.getRoom(), this.roomPlayer);
+      drawRoom();
     }
     else {
       displayText("\"" + command + "\" is not a recognized command!");
     }
   }
 
+  public void drawRoom() {
+    drawRoom(getPlayer().getRoom(), getPlayer());
+  }
+  
   public void drawRoom(Room room, Player player) {
     this.roomArea.setText(room.renderRoomCropped(player, 15, 10));
   }
