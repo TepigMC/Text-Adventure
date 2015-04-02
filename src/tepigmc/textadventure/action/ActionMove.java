@@ -13,8 +13,7 @@ public class ActionMove implements Action {
   }
   
   public ActionMove(Direction direction) {
-    this.actionDirection = direction;
-    this.actionDistance = 1;
+    this(direction, 1);
   }
 
   public Direction getDirection() { return actionDirection; }

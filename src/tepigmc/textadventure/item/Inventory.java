@@ -13,7 +13,7 @@ public class Inventory {
   }
   
   public Inventory(ItemStack[] itemStacks) {
-    setItemStacks(Array.toList(itemStacks));
+    this(Array.toList(itemStacks));
   }
 
   public List<ItemStack> getItems() { return this.inventoryItemStacks; }

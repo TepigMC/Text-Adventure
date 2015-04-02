@@ -6,20 +6,18 @@ public class TileDoor extends Tile {
   private String roomID;
   private Coordinates roomCoordinates;
   
-  public TileDoor() {
-	  super('O', false);
-  }
-
-  public TileDoor(String id, Coordinates coordinates) {
-	  super('O', false);
-  	this.roomID = id;
-    this.roomCoordinates = coordinates;
-  }
-  
   public TileDoor(char icon, String id, Coordinates coordinates) {
     super(icon, false);
     this.roomID = id;
     this.roomCoordinates = coordinates;
+  }
+  
+  public TileDoor(String id, Coordinates coordinates) {
+	  this('O', id, coordinates);
+  }
+  
+  public TileDoor() {
+    this(null, null);
   }
 
   public String getRoomID() { return roomID; }

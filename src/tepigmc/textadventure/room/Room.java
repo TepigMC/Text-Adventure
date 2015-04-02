@@ -25,17 +25,11 @@ public class Room {
   }
 
   public Room(String id, Tile[][] tiles, String[] setting) {
-    this.roomID = id;
-    setTiles(tiles);
-    this.roomEntities = new ArrayList<Entity>();
-    this.roomSetting = Array.toList(setting);
+    this(id, tiles, new ArrayList<Entity>(), Array.toList(setting));
   }
 
   public Room(String id, Tile[][] tiles) {
-    this.roomID = id;
-    setTiles(tiles);
-    this.roomEntities = new ArrayList<Entity>();
-    this.roomSetting = new ArrayList<String>();
+    this(id, tiles, new ArrayList<Entity>(), new ArrayList<String>());
   }
 
   public String getID() {	return roomID; }

@@ -10,28 +10,30 @@ public class Option {
   private List<String> optionDescription;
   private Action optionAction;
   
-  public Option(String[] names, String[] description, Action action) {
-    this.optionNames = Array.toList(names);
-    this.optionDescription = Array.toList(description);
+  public Option(List<String> names, List<String> description, Action action) {
+    this.optionNames = names;
+    this.optionDescription = description;
     this.optionAction = action;
+  }
+  
+  public Option(String[] names, String[] description, Action action) {
+    this(Array.toList(names), Array.toList(description), action);
   }
   
   public Option(String name, String[] description, Action action) {
-    setNames(name);
-    this.optionDescription = Array.toList(description);
-    this.optionAction = action;
+    this(new ArrayList<String>(), Array.toList(description), action);
+    this.optionNames.add(name);
   }
   
   public Option(String[] names, String description, Action action) {
-    this.optionNames = Array.toList(names);
-    setDescription(description);
-    this.optionAction = action;
+    this(Array.toList(names), new ArrayList<String>(), action);
+    this.optionDescription.add(description);
   }
   
   public Option(String name, String description, Action action) {
-    setNames(name);
-    setDescription(description);
-    this.optionAction = action;
+    this(new ArrayList<String>(), new ArrayList<String>(), action);
+    this.optionNames.add(name);
+    this.optionDescription.add(description);
   }
   
   public List<String> getNames() { return this.optionNames; }
