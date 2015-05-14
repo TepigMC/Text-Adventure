@@ -70,7 +70,7 @@ public class Array {
     return true;
   }  
   
-  public static <T> String equals(T[][] array) {
+  public static <T> String toString(T[][] array) {
     String arrayString = "[";
     for (int i = 0; i < array.length; i++) {
       arrayString += "[";
