@@ -55,7 +55,7 @@ public class TextAdventureUI implements KeyListener {
 
     frame.pack();
     frame.setLocationRelativeTo(null);
-    frame.setIconImage(new ImageIcon(getClass().getResource("../resources/icon.png")).getImage());
+    frame.setIconImage(new ImageIcon(getClass().getResource("resources/icon.png")).getImage());
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
 
